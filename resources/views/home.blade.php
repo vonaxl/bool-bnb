@@ -9,7 +9,7 @@
                     <h3>
                         <b> Prenota alloggi unici</b>
                     </h3>
-                    <form action="" method="post">
+                    <form action="{{route('apartment.search')}}" method="post">
                         @csrf
                         @method('POST')
                         <div class="form-group">
@@ -17,16 +17,28 @@
                             <input type="text" name="address" id="address" class="form-control input-lg" autocomplete="off" placeholder="Es: Milano"/>
                             <div id="addressList">
                             </div>
-                            </div> 
-                          <div class="form-group position">
+                        </div> 
+                        <span class="form-group">
+                            <label for="roomNum">Numero Stanze:</label>
+                            <input type="number" name="roomNum" id="" class="form-control" autocomplete="off" value ="1"/>
+                            <label for="bedNum">Numero Letti:</label>
+                            <input type="number" name="bedNum" id="" class="form-control" autocomplete="off" value ="1"/>
+                        </span>
+                        <div class="form-group position">
                             <input type="text" name="latitude" id="latitude"/>
                             <input type="text" name="longitude" id="longitude"/> 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                           </div>
 =======
                         </div>
                         <div class="form-group">
                             <label for="address">Area di ricerca (km):</label>
+=======
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Radius in km:</label>
+>>>>>>> master
                             <input type="number" name="radius" id="radius" class="" value ="20"autocomplete="off"/>
                             <div id="addressList">
                             </div>
@@ -38,7 +50,10 @@
                             @endforeach
                         </span> 
                         <br>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
                         <button type="submit">CERCA</button>
                     </form>
                 </div>
