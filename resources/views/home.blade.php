@@ -21,7 +21,24 @@
                           <div class="form-group position">
                             <input type="text" name="latitude" id="latitude"/>
                             <input type="text" name="longitude" id="longitude"/> 
+<<<<<<< Updated upstream
                           </div>
+=======
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Area di ricerca (km):</label>
+                            <input type="number" name="radius" id="radius" class="" value ="20"autocomplete="off"/>
+                            <div id="addressList">
+                            </div>
+                        </div>
+                        <span class="form-group col-8">
+                            <label for="services">Servizi:</label> <br>
+                            @foreach ($services as $service)
+                            <input name="services[]" type="checkbox"  value="{{$service->id}}">{{$service->name}}
+                            @endforeach
+                        </span> 
+                        <br>
+>>>>>>> Stashed changes
                         <button type="submit">CERCA</button>
                     </form>
                 </div>
