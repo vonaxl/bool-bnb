@@ -49397,12 +49397,18 @@ function keyUpQuery() {
       console.log(query);
       ajaxCall(query);
     }
-  }, 500));
-}
+  }, 200));
+} // function clickSearch(){
+//     $("#newSearch").click(function(){
+//         //$("#searchBar").fadeIn("slow");
+//         console.log("ciao")
+//       }); 
+// }
+
 
 function init() {
   keyUpQuery();
-  addressClick();
+  addressClick(); // clickSearch();
 }
 
 $(document).ready(init);
@@ -49472,8 +49478,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Axl\Documents\GitHub\bool-bnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Axl\Documents\GitHub\bool-bnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Filippo\Documents\GitHub\bool-bnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Filippo\Documents\GitHub\bool-bnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

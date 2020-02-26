@@ -99,12 +99,24 @@ function keyUpQuery() {
                 console.log(query);
                 ajaxCall(query);
             }
-        }, 500)
+        }, 200)
     );
 }
+
+// function clickSearch(){
+//     $("#newSearch").click(function(){
+//         //$("#searchBar").fadeIn("slow");
+//         console.log("ciao")
+//       }); 
+// }
+
+
+
 function init() {
     keyUpQuery();
     addressClick();
+    // clickSearch();
+
 }
 
 $(document).ready(init);

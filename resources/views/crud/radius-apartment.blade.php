@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid">
-        <div class="row p-5 search-section justify-content-center align-items-center">
-            <div class="form-box p-3 col-md-5">
+        <div id="searchBar"class="row p-5 search-section justify-content-center align-items-center" style="display: none">
+            <div class="form-box p-3 col-ms-8">
                 <form action="{{route('apartment.search')}}" method="post">
                     @csrf
                     @method('POST')
@@ -42,8 +42,11 @@
         </div>
         
 
-        <div class="row justify-content-center mt-3">
-            <h2>Appartamenti in evidenza</h2>
+        <div class="mt-3">
+            <h2 class="row justify-content-center">Appartamenti in evidenza</h2>
+            @if ($apartmentsAdvert -> isEmpty())
+                <h6 class="row justify-content-center"">Non ci sono appartamenti sponsorizzati</h6>          
+            @endif
         </div>
         <div class="row justify-content-center">
             <div id="myCarousel" class="col-md-6 carousel slide" data-ride="carousel">
@@ -51,7 +54,9 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 </ol> --}}
                 <div class="carousel-inner">
+                
                     @foreach($apartmentsAdvert as $key => $apartment)
+
                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">  
                         <div class="box mx-3 card mb-3 testclass">
                             <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
@@ -94,16 +99,47 @@
                     </div>
                     
                 @else
-                    <div >
+                    <div>
+                        <h2 class="text-center mt-3">Risultati ricerca</h2>
+                        <div class="container-fluid">
 
-                        <h2 class="text-center">Risultati ricerca</h2>
-                        <div class=" card-deck d-flex justify-content-center align-items-center  flex-wrap">
+                            <div class="row">
+                                
+                                <h6 class=" col-12 col-sm-10 m-auto text-center bg-info rounded p-2" style="line-height: 1.9;">
+
+                                    Stai cercando case nell'arco di <span class="font-weight-bold">{{$searchParam[1]}}</span> km da <span class="font-weight-bold">{{$searchParam[0]}}</span> con almeno <span class="font-weight-bold">{{$searchParam[4]}}</span> camera/e ed almeno <span class="font-weight-bold">{{$searchParam[5]}}</span> posto/i letto. 
+                                    @if(!$servicesQuery == null)
+                                    Con i seguenti servizi: 
+                                    @foreach ($servicesQuery as $serviceQuery)
+                                    @if($serviceQuery === '1' )
+                                    <span class="font-weight-bold">Wi-fi</span>
+                                    @elseif($serviceQuery === '2' )</span>
+                                    <span class="font-weight-bold">Posto macchina
+                                        @elseif($serviceQuery=== '3' )
+                                        <span class="font-weight-bold">Piscina</span>
+                                        @elseif($serviceQuery === '4' )
+                                        <span class="font-weight-bold">Portineria</span>
+                                        @elseif($serviceQuery === '5' )
+                                        <span class="font-weight-bold">Sauna</span>
+                                        @elseif($serviceQuery === '6' )
+                                        <span class="font-weight-bold">Vista mare</span>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                </h6> 
+                                <div class=" col-12  col-sm-2 d-flex mt-1  mt-md-0 ">
+                                        <button id="newSearch" type="submit" class=" mx-auto align-self-center row btn btn-primary ">Nuova ricerca</button>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        <div class=" mt-3 card-deck d-flex justify-content-center align-items-center  flex-wrap">
                             {{-- if sponsored --}}
                             @foreach ($apartments as $apartment)
                             <div class="apartment col-xs-12">
-                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="width:23rem"  >
-                                    <a class="m-3" href="{{route('apartmentShow', $apartment -> id)}}">
-                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle w-100" alt="..." ">
+                                <div class="{{ ($apartment -> sponsored > 0) ? "sponsored" : "" }} box mx-3 card mb-3 " style="width:300px; height: 400px;" >
+                                    <a class="m-3 mx-auto" href="{{route('apartmentShow', $apartment -> id)}}">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top imgstyle" alt="..." ">
                                         <div class="card-body">
                                             <h5 class="card-title">{{$apartment -> title}}</h5>
                                             <p class="card-text ">{{$apartment -> address}}</p>
@@ -121,6 +157,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            
+            $("button").click(function(){
+                //$("#searchBar").show();
+                $("#searchBar").fadeIn("fast");
+                
+                
+            }); 
+        });    
+    
+    </script>
     
 
 @endsection
+
