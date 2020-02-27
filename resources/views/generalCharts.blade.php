@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     @if ($apartments->count() > 0)
     <div class="row align-items-center justify-content-around p-5">
+        <div class="col-md-10 text-center"><h2>Statistiche generali degli appartamenti</h2>
+        </div>
         
-        <h2>Statistiche generali degli appartamenti</h2>
-        <div class="col-12 col-md-9 col-md-offset-3 mt-3">
+        <div class="col-sm-12 col-md-8 col-lg-5 mt-3">
             <canvas id="myChart" width="450" height="450"></canvas>
         </div>
 
