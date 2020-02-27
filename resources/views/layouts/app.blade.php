@@ -8,11 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -153,14 +153,6 @@
             </div>
         </footer>
     </div>
-    {{-- <script>
-        tt.map({
-            key: 'yfpz8kRCWBBiIF0WZOIZLdtsH2DhAfBG',
-            container: 'map',
-            center:[39.20660000,9.13499000],
-            style: 'tomtom://vector/1/basic-main',
-            zoom:3
-        });
-      </script> --}}
+    
 </body>
 </html>
