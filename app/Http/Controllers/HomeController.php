@@ -306,6 +306,7 @@ class HomeController extends Controller
     public function processApartment(Request $request, $id){
         $apartment = Apartment::findOrFail($id);
         $amount = $request->amount;
+        dd($amount);
         $nonce = $request->payment_method_nonce;
     
         $result = Braintree_Transaction::sale([
@@ -356,5 +357,7 @@ class HomeController extends Controller
             // header("Location: index.php");
             return back()->withErrors('An error occurred with the message: '.$result->message);
         }
+
+        
     }
 }
