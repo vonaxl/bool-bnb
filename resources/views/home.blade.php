@@ -55,6 +55,7 @@
         </div>
     </div>
     {{-- APPARTAMENTI IN EVIDENZA --}}
+<<<<<<< HEAD
     <div class="row justify-content-center mt-4 p-5">
         <div class="col-md-12 mt-3">
             <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
@@ -72,6 +73,26 @@
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">Aggiunto : {{$apartment -> created_at}}</small>
+=======
+    @if (!count($apartments) == 0)
+    <div class="container">
+        <div class="row justify-content-center mt-4 py-5 px-1">
+            <div class="col-md-12 mt-3">
+                <h1 class="text-center mb-5">Appartamenti in evidenza:</h1>
+                    <div class="row flex-nowrap apartments px-3">
+                        
+                        {{-- APPARTAMENTO --}}
+                        @foreach ($apartments as $apartment)
+                            <div class="col-md-5 apartment">
+                                <a class="" href="{{route('apartmentShow', $apartment -> id)}}">
+                                    <div class="box mx-3 card mb-3">
+                                        <img src="{{asset('images/'.$apartment -> image)}}" class="card-img-top card-img-sameSize" alt="..." >
+                                        <div class="card-body">
+                                            <h5 class="card-title ellipsis">{{$apartment -> title}}</h5>
+                                            <p class="card-text ellipsis">{{$apartment -> address}}</p>
+                                            <p class="card-text"><small class="text-muted">Aggiunto il: {{$apartment -> created_at->format('d-m-Y')}}</small></p>
+                                        </div>
+>>>>>>> master
                                     </div>
                                 </a>
                             </div>
